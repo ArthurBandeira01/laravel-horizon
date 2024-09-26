@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Services\Images\InterventionImage;
+use App\Services\Images\WatermarkInterface;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -19,6 +21,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        $this->app->singleton(
+            WatermarkInterface::class,
+            InterventionImage::class
+        );
     }
 }
